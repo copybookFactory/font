@@ -180,11 +180,11 @@ $(document).on('keydown', function(e){
 });
 (function(){
 	$.Loading("正在载入字体资源...");
-	try {
-		var re = window.control.getFontData();
-		$.data.appFontPath = $.getUrlParam(re, 'appFontPath');
-		$.data.appFontList = $.getUrlParam(re, 'fontList');
-	} catch(e){}
+	if(location.search != "") {
+		$.appData('txt') = decodeURIComponent($.getUrlParam(null, 'txt'));
+		$.appData('row') = $.getUrlParam(null, 'row');
+		$.appData('columns') = $.getUrlParam(null, 'columns');
+	}
 	$.fontList($.data.appFontPath, $.data.appFontList);
 	$('#version').html($.version);
 })();

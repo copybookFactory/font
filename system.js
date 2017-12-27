@@ -94,7 +94,7 @@ var sys = {
 		$('#loading').hide();
 	},
 	'getUrlParam' : function(data, key){
-		data = data || location.search
+		data = data || location.search;
 		var url = decodeURIComponent(data);
 		var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
 		var r = url.substr(1).match(reg);
