@@ -26,7 +26,7 @@ var _config = {
 serverCallBack(_config);
 
 $(window).on('load', function(){
-	if($.version != _config.Version){
+	if(!$version || $.version != _config.Version){
 		$.confirm("检测到新版本，是否进行更行？", function(flg){
 			if(flg) {
 				$.setDownFile(_config.downUrl, "shufa.apk");
