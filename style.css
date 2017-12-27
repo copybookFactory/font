@@ -8,15 +8,15 @@ a, a:link, a:visited {text-decoration:none;}
   src: url('webfile/田英章繁体.eot');
   src: url('webfile/田英章繁体.eot?#iefix') format('embedded-opentype'),
        url('webfile/田英章繁体.woff') format('woff'),
-       url('fontapp/webfile/田英章繁体.ttf')  format('truetype'),
-       url('fontapp/webfile/田英章繁体.svg#svgFontName') format('svg');
+       url('webfile/田英章繁体.ttf')  format('truetype'),
+       url('webfile/田英章繁体.svg#svgFontName') format('svg');
 }
 @font-face {
   font-family: 'iconFont';
-  src: url('fontapp/webfile/iconFont.eot');
-  src: url('fontapp/webfile/iconFont.eot?#iefix') format('embedded-opentype'),
-       url('fontapp/webfile/iconFont.woff') format('woff'),
-       url('fontapp/webfile/iconFont.ttf')  format('truetype'),
+  src: url('webfile/iconFont.eot');
+  src: url('webfile/iconFont.eot?#iefix') format('embedded-opentype'),
+       url('webfile/iconFont.woff') format('woff'),
+       url('webfile/iconFont.ttf')  format('truetype'),
        url('webfile/iconFont.svg#svgFontName') format('svg');
 }
 
