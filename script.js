@@ -181,9 +181,9 @@ $(document).on('keydown', function(e){
 (function(){
 	$.Loading("正在载入字体资源...");
 	if(location.search != "") {
-		$.appData('txt') = decodeURIComponent($.getUrlParam(null, 'txt'));
-		$.appData('row') = $.getUrlParam(null, 'row');
-		$.appData('columns') = $.getUrlParam(null, 'columns');
+		$.appData('txt', decodeURIComponent($.getUrlParam(null, 'txt')));
+		$.appData('row', $.getUrlParam(null, 'row'));
+		$.appData('columns', $.getUrlParam(null, 'columns'));
 	}
 	$.fontList($.data.appFontPath, $.data.appFontList);
 	$('#version').html($.version);
