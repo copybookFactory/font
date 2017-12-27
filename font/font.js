@@ -1,6 +1,6 @@
 var _config = {
 	'Version' : '1.09',
-	'downUrl' : 'http:\/\/57.23it.cc:81/fontapp/font/',
+	'downUrl' : 'http:\/\/font.23it.cc/font/',
 	'fontList' : [
 		'方正启体繁体.ttf',
 		'汉仪瘦金书繁.ttf',
@@ -25,8 +25,7 @@ var _config = {
 serverCallBack(_config);
 
 $(window).on('load', function(){
-	var clientVersion = document.scripts[document.scripts.length - 1].src.match(/v=([\d\.]+)/)[1];
-	if(clientVersion != "1.01" && clientVersion != _config.Version){
+	if($.version && $.version != _config.Version){
 		$.confirm("检测到新版本，是否进行更行？", function(flg){
 			if(flg) {
 				$.setDownFile(_config.downUrl, "shufa.apk");
