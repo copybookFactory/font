@@ -1,5 +1,5 @@
 var _config = {
-	'Version' : '1.12',
+	'Version' : '1.13',
 	'downUrl' : 'http://font.23it.cc/font/',
 	'fontList' : [
 		'方正启体繁体.ttf',
