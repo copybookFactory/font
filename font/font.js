@@ -19,7 +19,8 @@ var _config = {
 		'汉仪颜楷繁.ttf',
 		'迷你繁褚楷.ttf',
 		'张心启欧楷.ttf',
-		'劉炳森隸書.ttf'
+		'劉炳森隸書.ttf',
+		'黄自元楷书.ttf'
 	]
 };
 serverCallBack(_config);
