@@ -3,12 +3,29 @@ html, body {width:100%;height:100%;margin:0;padding:0;border:0;overflow:hidden;f
 * {outline:none;cursor:default;}
 a, a:link, a:visited {text-decoration:none;}
 
+@font-face {
+  font-family: '田英章繁体';
+  src: url('webfile/田英章繁体.eot');
+  src: url('webfile/田英章繁体.eot?#iefix') format('embedded-opentype'),
+       url('webfile/田英章繁体.woff') format('woff'),
+       url('webfile/webfile/田英章繁体.ttf')  format('truetype'),
+       url('田英章繁体.svg#svgFontName') format('svg');
+}
+@font-face {
+  font-family: 'iconFont';
+  src: url('webfile/iconFont.eot');
+  src: url('webfile/iconFont.eot?#iefix') format('embedded-opentype'),
+       url('webfile/iconFont.woff') format('woff'),
+       url('webfile/iconFont.ttf')  format('truetype'),
+       url('webfile/iconFont.svg#svgFontName') format('svg');
+}
+
 #all {width:100%;height:100%;}
-#head {width:100%;height:46px;background:#252a2e;color:white;font:1.2em/42px bold;position:relative;z-index:1003;}
+#head {width:100%;height:46px;background:#252a2e;color:white;font:1.2em/42px bold;position:relative;}
 
 #main {height:75%;height:calc(100% - 114px);height:-webkit-calc(100% - 114px);overflow:auto;width:100%;padding:8px 0;}
 
-.k {margin:0 8px;border-radius:5px;font:1em/42px normal;border:1px solid #cbcbcb;background:#ededed;color:#545454;}
+.k {margin:0 8px;border-radius:5px;font:1em/42px normal;border:1px solid #cbcbcb;background:#eee;color:#545454;}
 .k ol {margin:0;padding:0;}
 .k dt, .k  dl, .k  dd {list-style:none;border-top:1px solid #cbcbcb;padding:0 5px;margin:0;text-align:left;
     box-sizing:border-box;-webkit-box-sizing:border-box;text-align:center;font:1em/52px normal;vertical-align:middle;}
@@ -23,37 +40,41 @@ a, a:link, a:visited {text-decoration:none;}
 .k .iconFont {font:32px/52px normal;display:block;width:64px;float:right;}
 .k .ck {color:green;}
 
-#t2 dd {background:url(fontico.png) no-repeat 6px 10px;text-indent:38px;}
+#t2 dd {background:url(images/fontico.png) no-repeat 6px 10px;text-indent:38px;}
 #t2 a, #more {float:right;text-align:center;margin:10px 5px auto;width:50px;height:20px;line-height:20px;text-indent:0;}
 #t3 dt {width:30%;}
 #t3 dl {width:70%;}
 
-#t2 dd, #t4 dd {text-align:left;}
+.k dd {text-align:left;}
+#t1 dd {text-align:center;}
+.k p {text-indent:2em;line-height:32px;padding:0 5px;background:#fff;border-radius:5px;}
 
 .k input[type=text], .k input[type=number], .k a {border-radius:3px;border:1px solid #cbcbcb;padding:6px;background:#fff;}
 .k a {width:80px;background:#438bc9;color:#fff;border:0;height:27px;line-height:27px;text-align:center;}
 .k a.del {background:#5ab75d;}
 .k a:active {background:#000;}
 .k a, .k a:link, .k a:visited {display:inline-block;}
-.k a.link {display:inline;color:#5ab75d;background:transparent;border:0;padding:0;}
+.k a.link {color:#5ab75d;border:0;padding:0 20px 0 0;text-align:right;
+    background: url(images/forward.png) no-repeat right center;float:right;height:50px;line-height:50px;}
+
 .k input[type=text], .k input[type=number] {height:28px;width:50px;width:calc(100% - 16px);width:-webkit-calc(100% - 16px);font:1.05em/28px normal;}
 .k input[type=number] {text-align:center;width:22px;height:16px;}
 
-.k select {height:42px;width:calc(100% - 2px);width:-webkit-calc(100% - 2px);
-    border:0;appearance:none;-webkit-appearance:none;background: url(forward.png) no-repeat right center transparent;font-size:0.95em;}
+.k select {height:42px;width:calc(100% - 2px);width:-webkit-calc(100% - 2px);color:#5ab75d;
+    border:0;appearance:none;-webkit-appearance:none;background: url(images/forward.png) no-repeat right center transparent;font-size:0.95em;}
 
 .t {display:none;}
 #t1 {display:block;}
 .logo {margin:5px 0 10px;border-radius:10px;width:96px;}
 
-#send {width:100%;height:52px;background:#252a2e;padding-top:7px;}
+#send {width:100%;height:52px;background:#252a2e;padding-top:6px;}
 #content {padding:5px 0;width:100%;overflow:auto;text-align:center;}
 #content canvas {display:block;margin:0 auto;}
 
 .td {width:100%;margin:0;padding:0;margin-top:-9px;height:12px;overflow:hidden;font-size:0;}
 .triangle {width:0px;height:0px;border-width:6px;border-style:solid;display:inline-block;border-color: transparent transparent #ddd transparent;}
 .msg {padding:8px;border-radius:6px;color:#fff;display:inline-block;margin-top:-1px;font-size:1.05em;max-width:80%;min-width:10px;white-space:normal; word-break:break-all;}
-#menuBut {width:45px;height:45px;background: url(menuBut.gif) no-repeat 25px center;top:0;right:0;position:absolute;z-index:1005;}
+#menuBut {width:45px;height:45px;background: url(images/menuBut.gif) no-repeat 25px center;top:0;right:0;position:absolute;}
 #menu {min-width:45%;top:51px;right:5px;display:none;text-align:right;position:absolute;}
 #menu .triangle {margin-right:7px;border-bottom-color:#252a2e;}
 #menu .msg {background:#252a2e;text-align:center;width:100%;padding:0;}
@@ -77,14 +98,13 @@ a.dialog-btn:active {background:#252a2e;color:#fff;}
 
 .dialog-btn-close {width:100%;}
 .dialog-btn-cancel, .dialog-btn-ok {width:50%;float:left;box-sizing:border-box;-webkit-box-sizing:border-box;}
-a.dialog-btn-ok {/*box-shadow:-1px 0 1px -1px #888;*/border-left:1px solid #ccc;}
+a.dialog-btn-ok {border-left:1px solid #ccc;}
 .prompt {position:fixed;top:45%;left:50%;z-index:1001;padding:15px 20px;background-color:rgba(0,0,0,.8);
     color:#fff;border-radius:5px;line-height:1.4;font-size:1.2em;transition:opacity .5s;-webkit-box-sizing:border-box;}
 
-#loading {width:180px;margin-left:-90px;display:none;font-size:0.9em;}
+#loading {min-width:180px;margin-left:-90px;display:none;font-size:0.9em;}
 
 /*iconFont*/
-@font-face {font-family: 'iconFont';src: url('iconfont.ttf');}
 .iconFont{font-family:"iconFont" !important;font-size:26px;font-style:normal;}
 #send ul, li {margin:0;padding:0;}
 #send li {width:25%;display:inline-block;list-style:none;float:left;font-size:0.6em;}
@@ -98,9 +118,13 @@ a.dialog-btn-ok {/*box-shadow:-1px 0 1px -1px #888;*/border-left:1px solid #ccc;
 #R {border-color:red;border-image: -webkit-linear-gradient(Left, #007d7d, #ff7d7d) 10 10;}
 #G {border-color:green;border-image: -webkit-linear-gradient(Left, #7d007d, #7dff7d) 10 10;}
 #B {border-color:blue;border-image: -webkit-linear-gradient(Left, #7d7d00, #7d7dff) 10 10;}
-#R div, #G div, #B div, #Z div {width:26px;height:26px;overflow:hidden;background:#fff;position:relative;top:-20px;left:125px;border-radius:13px;border:1px solid gray;}
+#R div, #G div, #B div, #Z div {width:26px;height:26px;overflow:hidden;background:#fff;position:relative;top:-19px;left:125px;border-radius:13px;border:1px solid gray;}
 #colorWrite {width:100%;height:38px;line-height:38px;text-align:center;}
 #colorCode, #zoomCode {width:100%;line-height:26px;border:1px solid gray;box-sizing:border-box;-webkit-box-sizing:border-box;}
 #zoomCode {border:0;}
 #zoomCode label {display:inline-block;width:90px;font:30px/35px normal;}
 #zoomCode .iconFont {color:#438bc9;font:35px/35px normal;}
+
+/*进度条*/
+#ProgressBar {width:220px;font:1em/38px normal;height:38px;background:#5ab75d url(images/Progress.png) no-repeat left 0;border:1px solid #000;border-radius:5px;background-size:0% 100%;}
+#ProgressTxt {font:0.9em/38px normal;}

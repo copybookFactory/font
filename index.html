@@ -28,10 +28,10 @@
 				<dd><div id="content"><canvas id="canvas">浏览器不支持Canvas</canvas></div></dd>
 			</ol>
 		</div>
-		<div id="t2" class='k t'>
+		<div id="t2" class='k t' data-title='字体下载'>
 			更新服务器加载失败
 		</div>
-		<div id="t3" class='k t'>
+		<div id="t3" class='k t' data-title='软件设置'>
 			<ol>
 				<dt class="head">背景颜色</dt><dl class="head"><input type="hidden" id="canvasColor" value="#FFFFFF" /><i></i></dl>
 				<dt>网格颜色</dt><dl><input type="hidden" id="gridColor" value="#FF0000" /><i></i></dl>
@@ -45,15 +45,18 @@
 				<dt>备用字体</dt><dl><select id="backClass"></select></dl>
 			</ol>
 		</div>
-		<div id="t4" class='t'>
-			<img src="icon.png" class='logo' />
+		<div id="t4" class='t' data-title='关于软件'>
+			<img src="images/icon.png" class='logo' />
 			<div class='k'>
 			<ol>
 				<dd>软件名称：字帖工厂</dd>
-				<dd>软件版本：V1.01</dd>
+				<dd>软件版本：<span id='version'></span></dd>
 				<dd>软件作者：biyuan</dd>
-				<dd>软件交流：(QQ群)476913050</dd>
-				<dd>APP下载：<a class='link' href="http://57.23it.cc:81/fontapp/font/shufa.apk">点击下载</a></dd>
+				<dd>软件交流：(QQ群)<a target="_blank" class='link' href="//shang.qq.com/wpa/qunwpa?idkey=1194c6ed9cd84c179e04094a4c5abede691c92fa554fbcb9811e041b68ff8580">476913050</a></dd>
+				<dd>官方网站：<a class="link" href="javascript:$.OpenUrl('http://font.23it.cc');">点击访问</a></dd>
+				<dd>免责声明：<a class="link" href="javascript:$.Show('#t5');">点击查看</a></dd>
+				<dd>APP下载：<a class='link' href="font/shufa.apk">点击下载</a></dd>
+
 			</ol>
 			</div>
 			<textarea id="ColorHtml">
@@ -73,6 +76,19 @@
 				</div>
 			</textarea>
 		</div>
+		<div id="t5" class='k t' data-prev='#t4' data-title='免责声明'>
+			<ol>
+				<dd><p>一、本软件所有字体文件与资源均来自于互联网，其版权均归原作者及其网站所有，本软件虽力求保存原有的版权信息，但由于诸多原因，可能导致无法确定其真实来源，请原作者原谅！如果您对本站教程与资源的归属存有异议，请立即通知优设，情况属实，我们会第一时间予以删除，并同时向您表示歉意！本软件绝对不是故意侵犯原作者版权！如果您有优秀的作品，本软件也会帮您在扩散推荐。</p>
+
+					<p>二、本软件转载的字体文件与资源仅为资源共享、学习参考之目的，很难对其可用性、准确性或可靠性做出任何承诺与保证。本软件无法对任何由于使用或无法使用本软件提供的教程与资源所造成的损失负任何责任。</p>
+
+					<p>三、本软件通过互联网转载的字体文件与资源，或是软件作者自己提供的字体文件与资源，版权均归原作者所有，未经原版权作者许可，任何人不得擅作他用！您可以复制、转载和传播本软件的任何信息，但务必在转载时注明来源，尊重其知识产权，并自负版权等法律责任。</p>
+
+					<p>四、凡以任何方式登陆本软件或直接、间接使用本软件资料者，均应仔细阅读本申明，一旦使用本软件任何字体文件和资源，即被视为您已接受本站的免责申明。</p>
+
+					<p>感谢大家与本软件作者一起努力，营造一个优秀和谐的网络环境！</p></dd>
+			</ol>
+		</div>
 	</div>
 	<div class="dialog-overlay" id="dialog"></div>
 	<div class="prompt" id="loading"></div>
@@ -82,7 +98,7 @@
 		<div class="msg">
 			<ul>
 				<li><a href="javascript:location.reload();">刷新</a></li>
-				<li><a href="javascript:$.alert('功能完善中');">分享</a></li>
+				<li><a href="javascript:$.showShare();">分享</a></li>
 			</ul>
 		</div>
 	</div>
@@ -96,6 +112,6 @@
 	</div>
 </div>
 <script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="http://57.23it.cc:81/fontapp/font/font.js?v=1.01"></script>
+<script type="text/javascript" src="http://font.23it.cc/font/font.js"></script>
 </body>
 </html>

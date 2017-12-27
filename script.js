@@ -1,29 +1,20 @@
 $.extend({
+	'version' : $.getVersionName(),
 	'data' : {
 		'fontList' : {
-			"田英章繁体" : ["tyz.ttf", 256, 0, 0],
-			//"田英章繁体细" : ["tyz.otf", 220, 18, 18],
-			//"方正启体繁体" : ["font/方正启体繁体.ttf", 220, 18, 18],
-			//"方正小篆体" : ["font/方正小篆体.ttf", 220, 18, 18],
-			//"汉仪魏碑繁" : ["font/汉仪魏碑繁.ttf", 220, 18, 18],
-			//"汉仪中隶书繁" : ["font/汉仪中隶书繁.ttf", 220, 18, 18],
-			//"苏新诗柳楷繁" : ["font/苏新诗柳楷繁.ttf", 220, 18, 18],
-			//"腾祥伯当行楷繁" : ["font/腾祥伯当行楷繁-200-28-0.ttf", 200, 28, 0],
-			//"汉仪瘦金书繁" : ["font/汉仪瘦金书繁.ttf", 220, 18, 18]
+			"田英章繁体" : ["田英章繁体.ttf", 256, 0, 0]
 		},
 		'cfg' : {
 			'ow': 256, 'zoom' : 1, 'canvasColor': '', 'gridColor' : '', 'color' : '', 'order' : '',
 			'fontClass' : '', 'grid' : '', 'outline' : '', 'fill' : '', 'txt' : '', 'row' : '', 'columns' : ''
 		},
 		'sevCfg' : {},
-		'appFontPath' : $.getUrlParam('appFontPath')
+		'appFontPath' : null,
+		'appFontList' : null
 	},
 	'reText' : function(txt, sl, hl) {
 		var r = [], max = sl * hl;
 		var txt = txt.replace(/[\x00-\xff\s，。]/g, "");
-		if($.data.cfg.fontClass == "田英章繁体细") {
-			txt = $.Conver(txt);
-		}
 		txt = (txt + Array(max).join("\u3000")).substr(0, max).split("");
 		if($.data.cfg.order == 'rt') txt = txt.reverse();
 		for(var i = 0; i < txt.length; i ++){
@@ -121,7 +112,6 @@ $.extend({
 		$("#backClass").empty();
 		$('#load').empty();
 		for(var i in $.data.fontList) {
-			newStyle.appendChild(document.createTextNode("@font-face {font-family: '" + i + "';src: url(" +  $.data.fontList[i][0] + ");}"));
 			$('#fontClass').get(0).options.add(new Option(i, i));
 			$('#backClass').get(0).options.add(new Option(i, i));
 			$('#load').append("<label style='font-family:" + i + ";'>字</label>");
@@ -129,7 +119,7 @@ $.extend({
 		$('head').append(newStyle);
 	},
 	'fontList' : function(root, str) {
-		if(str != "") {
+		if(str) {
 			var arr = str.split(",");
 			for(var i = 0; i < arr.length; i ++) {
 				var ri = arr[i].split(/-|\./);
@@ -138,26 +128,18 @@ $.extend({
 		}
 		$.loadFont();
 	},
-    'setDownFont' : function(downUrl, fontName) {
-    	$.alert("演示版不支持该功能");
+    'setDownFile' : function(downUrl, fileName, cls) {
+    	$.showDemo();
     },
     'delDownFont' : function(fontName) {
-    	$.confirm("确定要删除吗？", function(r) {
-    		if(r) {
-    			$.alert("演示版不支持该功能");
-    		}
-    	});
+    	$.showDemo();
     },
     'makeImage' : function() {
     	$.autoAppVal();
 		$.setText();
 	},
     'downImage' : 	function() {
-    	$.confirm("确定要保存吗？", function(flag) {
-			if(flag) {
-				$.alert("演示版不支持该功能");
-			}
-		});
+    	$.showDemo();
 	},
     'serverCallBack' : function(rs) {
     	var r = rs || $.data.sevCfg;
@@ -166,13 +148,25 @@ $.extend({
     	re.push("<ol>");
     	for(var i = 0; i < r.fontList.length; i ++) {
     		var fName = r.fontList[i].replace(/[-\.].+/, '');
-    		var dBut = "<a href='javascript:$.setDownFont(\"" + r.downUrl + "\", \"" + r.fontList[i] + "\");' class='but'>下载</a>";
+    		var dBut = "<a href='javascript:$.setDownFile(\"" + r.downUrl + "\", \"" + r.fontList[i] + "\", \"font\");' class='but'>下载</a>";
     		if($.data.fontList[fName]) dBut = "<a href='javascript:$.delDownFont(\"" + r.fontList[i] + "\");' class='but del'>删除</a>"
     		re.push("<dd>" + fName + dBut + "</dd>");
     	}
     	re.push("</ol>");
     	$('#t2').html(re.join(""));
-    }
+    },
+    'keyBack' : function() {
+    	var prev = $('.t:visible').data('prev');
+     	if($("#loading").is(':visible')){
+     		return false;
+     	} else if($(".dialog").is(':visible')){
+     		$(".dialog").remove();
+     	} else if(prev) {
+     		$.Show(prev);
+     	} else if(!$('#t1').is(':visible')) {
+     		$.Show('#t1');
+         }
+     }
 });
 $('input[type=text],input[type=number]').focus(function(){this.select();});
 $('#row,#columns').keyup(function() {this.value = this.value.replace(/[^\d]/g, "");});
@@ -186,7 +180,13 @@ $(document).on('keydown', function(e){
 });
 (function(){
 	$.Loading("正在载入字体资源...");
-	$.fontList($.data.appFontPath, $.getUrlParam('fontList'));
+	try {
+		var re = window.control.getFontData();
+		$.data.appFontPath = $.getUrlParam(re, 'appFontPath');
+		$.data.appFontList = $.getUrlParam(re, 'fontList');
+	} catch(e){}
+	$.fontList($.data.appFontPath, $.data.appFontList);
+	$('#version').html($.version);
 })();
 $(window).on('load', function(){
 	$.closeLoading();
@@ -226,12 +226,3 @@ $('#menuBut').click(function(evant) {
 $('body').click(function() {$('#menu').css('display', 'none');});
 
 function serverCallBack(rs) {return $.serverCallBack(rs);}
-function keyBack() {
-	if($("#loading").is(':visible')){
-		return false;
-	} else if($(".dialog").is(':visible')){
-		$(".dialog").remove();
-	} else if(!$('#t1').is(':visible')) {
-		$.Show('#t1');
-    }
-}
