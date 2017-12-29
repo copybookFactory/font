@@ -6,10 +6,15 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="format-detection" content="telephone=no" />
+	<title>字帖工厂</title>
 </head>
 <body>
-<script> 
-location.href="http://fontapp.23it.cc:81";
+<script type="text/javascript"> 
+var url = "http://fontapp.23it.cc:81";
+if(location.search){
+	url += "?" + location.search;
+}
+location.href　=　url;
 </script> 
 </body> 
 </html> 
